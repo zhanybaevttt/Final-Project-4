@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Companies</title>
+    <style>table,
+    td {
+        border: 1px solid #333;
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 25px;
+    }
+
+    thead,
+    tfoot {
+        background-color: #333;
+        color: #fff;
+    }
+    </style>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+<table class="table table-bordered ">
+    <thead class="table-dark">
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Course name </th>
+        <th scope="col">Duration-Month</th>
+        <th scope="col" style="color:white">Company</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody class="table-success">
+    <tr th:each="course : ${courses}">
+        <td th:text="${course.getId()}"></td>
+        <td th:text="${course.courseName}"></td>
+        <td th:text="${course.durationMonth}"></td>
+        <td th:text="${course.company.companyName}"></td>
+
+        <td><a th:href="@{/courses/updateCourse/{id}(id=${course.id})}">
+            <button style="height: 40px; width: 80px; background-color:wheat;" class="btn btn-primary">update</button>
+        </a>
+        </td>
+        <td><a th:href="@{/courses/deleteCourses(companyId=${course.id})}"
+               onclick="return confirm('Are you sure you want to delete this company?');">
+            <button style="height: 40px; width: 80px; background-color:dimgray;" class="btn btn-primary">delete</button>
+        </a></td>
+    </tr>
+    </tbody>
+</table>
+<br><br><br><br>
+<input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add company"
+       onclick="window.location.href = 'courses/addCourse'">
+</body>
+</html>

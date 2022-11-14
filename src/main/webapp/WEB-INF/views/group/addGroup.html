@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form
+        action="#"
+        th:action="@{/saveUpdateCompany}"
+        th:object="${group}"
+        method="post"
+        style="text-align:center; margin-top:200px; font-size: 30px;">
+
+    <input type="hidden" name = "id" th:field="*{id}">
+    <input type="text"  name="companyName" th:field="*{groupName}" placeholder="Company Name">
+    <br><br>
+    <input type="text"  name="locatedCountry" th:field="*{dateOfStart}" placeholder="Located Country">
+    <input type="text"  name="locatedCountry" th:field="*{dateOfFinish}" placeholder="Located Country">
+    <br><br>
+    <input type="submit" value="Update">
+</form>
+</body>
+</html>
+
+
+
+
